@@ -1,0 +1,59 @@
+﻿
+@model ShopWEB.Models.Product
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootshop online Shopping cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+    <link href="/custom/client/themes/css/bootstrap-responsive.min.css" rel="stylesheet" />
+
+    <style type="text/css" id="enject"></style>
+    <style>
+        h4.ex {
+            color: white;
+            margin-top: 25px;
+        }
+    </style>
+
+</head>
+<body>
+    <form action="@Url.Action("Alter","AlterProduct",new { id = ViewBag.id})" method="post">
+        <div class="container">
+            <div class="container ">
+                <div class="col-sm-12 col-md-5 col-xs-8">
+                    <h3>@Model.Name</h3>
+                    <hr />
+                    <img src="@Model.Image" />
+                    <hr />
+                    <div class="form-group" style="width:60%;">
+                        <h3 style="margin-left:30%">
+                            <input type="text" class="form-control" value="@Model.Price" name="price">
+                        </h3>
+                    </div>
+                    <hr />
+                    <h4>
+                        <input type="submit" class="btn btn-warning col-sm-12 col-md-12 col-xs-8" value="Cập Nhật Giá Sản Phẩm">
+                    </h4>
+
+                </div>
+
+                <div class="col-sm-12 col-md-7 col-xs-8">
+                    <h2>Thông số kỹ thuật</h2>
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.Specification))
+                </div>
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>

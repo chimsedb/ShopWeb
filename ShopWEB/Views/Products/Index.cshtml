@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using ShopWEB.Models
+@model IEnumerable<Product>
+
+<div class="container">
+    
+    @if (@ViewBag.namecatalog != null)
+    {
+        <h4 style="margin-left:45px;font-family:'Times New Roman';">
+            @ViewBag.namecatalog Nổi Bật Nhất
+        </h4>
+    }
+
+    @foreach (Product product in @Model)
+    {
+        <div class="col-sm-6 col-md-3 col-xs-12">
+            <div class="thumbnail">
+                <a href="/Home/DetailProduct/@product.ID_Product">
+                    <img src="@product.Image" style="min-height:200px;height:200px;" />
+                </a>
+                <div class="caption">
+                    <h5 align="center" style="min-height:30px;height:30px;">@product.Name</h5>
+
+                    <h4 style="text-align:center">
+                        <a class="btn btn-default" href="/Home/DetailProduct/@product.ID_Product">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </a>
+                        <a class="btn btn-default" href="@Url.Action("ThemGioHang","ShoppingCart",new { id_pro = @product.ID_Product})">Add to <i class="icon-shopping-cart"></i></a>
+                        <a class="btn btn-primary" href="#">@product.Price</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

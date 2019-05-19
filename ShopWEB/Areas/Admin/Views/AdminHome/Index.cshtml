@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using ShopWEB.Models
+@model IEnumerable<Product>
+
+<body>
+
+    <div class="container ">
+        <h3>Thông tin tất cả sản phẩm</h3>
+        <hr />
+        <a href="@Url.Action("Add", "AddProduct", new { id = Convert.ToInt32(Session["admin"]) })">
+            <input type="submit" class="btn btn-primary" value="Thêm Mới">
+        </a>
+        <table class="table table-bordered" style="margin-top:15px;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá Tiền</th>
+                    <th>Ngày Thêm</th>
+                    <th>Tác Vụ</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (Product product in Model)
+                {
+                    <tr>
+                        <td>@product.ID_Product</td>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>@product.Created</td>
+
+                        <div id="id01" class="w3-modal">
+                            <div class="w3-modal-content">
+                                <div class="w3-container">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                    <p>Some text. Some text. Some text.</p>
+                                    <p>Some text. Some text. Some text.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <td>
+                            <a href="@Url.Action("Alter","AlterProduct",new { id = @product.ID_Product})">
+                                <img src="http://www.clker.com/cliparts/E/X/T/d/g/H/red-edit-icon-glossy-hi.png" class="img-rounded" alt="Cinque Terre" style="width:20px; height:20px; margin-left:20%;">
+                            </a>
+                            <a href="@Url.Action("Delete","DeleteProduct",new { id = @product.ID_Product})">
+                                <img src="https://secure.webtoolhub.com/static/resources/icons/set1/a947bd4c59d8.png" class="img-rounded" alt="Cinque Terre" style="width:20px; height:20px; margin-left:20%;">
+                            </a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+
+
+        </table>
+
+        @*<div class="row">
+            <button type="button" class="btn btn-primary" style="margin:auto; margin-bottom:2%;">Ghi Nhận</button>
+        </div>*@
+
+    </div>
+
+</body>
+

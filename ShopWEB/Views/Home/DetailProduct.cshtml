@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "DetailProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ShopWEB.Models.Product
+
+<div class="container">
+    <div class="container ">
+        <div class="col-sm-12 col-md-5 col-xs-8">
+            <h3>@Model.Name</h3>
+            <hr />
+            <img src="@Model.Image" />
+            <hr />
+            <h3 style="margin-left:28%">@Model.Price VND</h3>
+            <hr />
+            <button type="button" class="btn btn-warning col-sm-12 col-md-12 col-xs-8">
+                <h4>Mua Sản Phẩm</h4>
+            </button>
+
+            <button type="button" class="btn btn-primary col-sm-12 col-md-12 col-xs-8" style="margin-top:5px;">
+                <h4>Thêm Sản Phẩm</h4>
+            </button>
+
+        </div>
+        @*<div class="col-sm-12 col-md-7 col-xs-8">
+            <h2>Thông số kỹ thuật</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><span>Màn hình:</span><div><a href="https://www.thegioididong.com/hoi-dap/cong-nghe-ma-hinh-dynamic-amoled-co-gi-noi-bat-1151123" target="_blank">Dynamic AMOLED</a>, 6.1", Quad HD+ (2K+)</div></li>
+                <li class="list-group-item"><span>Hệ điều hành:</span><div><a href="https://www.thegioididong.com/hoi-dap/top-5-tinh-nang-moi-duoc-yeu-thich-nhat-tren-and-1107119" target="_blank">Android 9.0 (Pie)</a></div></li>
+                <li class="list-group-item"><span>Camera sau:</span><div>Chính 12 MP &amp; Phụ 12 MP, 16 MP</div></li>
+                <li class="list-group-item"><span>Camera trước:</span><div>10 MP</div></li>
+                <li class="list-group-item"><span>CPU:</span><div><a href="https://www.thegioididong.com/tin-tuc/exynos-9820-danh-cho-galaxy-s10-se-dung-gpu-mali-g76-mp18-1100461" target="_blank">Exynos 9820 8 nhân 64-bit</a></div></li>
+                <li class="list-group-item"><span>RAM:</span><div>8 GB</div></li>
+                <li class="list-group-item"><span>Bộ nhớ trong:</span><div>128 GB</div></li>
+                <li class="list-group-item"><span>Thẻ nhớ:</span><div><a href="https://www.thegioididong.com/the-nho-dien-thoai" target="_blank">MicroSD, hỗ trợ tối đa 512 GB</a></div></li>
+                <li class="list-group-item"><span>Thẻ SIM:</span><div class="isim"><a href="https://www.thegioididong.com/tin-tuc/tim-hieu-cac-loai-sim-thong-dung-sim-thuong-micro--590216#nanosim" target="_blank">2 SIM Nano (SIM 2 chung khe thẻ nhớ)</a>, <a href="https://www.thegioididong.com/hoi-dap/4g-la-gi-731757" target="_blank">Hỗ trợ 4G</a></div><div class="ibsim"><b class="h">HOT</b><a href="https://www.thegioididong.com/sim-so-dep/viettel?t=34">SIM VIETTEL GÔGÔ 4G (2.5GB data/ tháng)</a>. Giá từ <b class="p">80.000đ</b></div></li>
+                <li class="list-group-item"><span>Dung lượng pin:</span><div>3400 mAh, <a href="https://www.thegioididong.com/hoi-dap/cong-nghe-sac-nhanh-tren-smartphone-755549" target="_blank">có sạc nhanh</a></div></li>
+            </ul>
+        </div>*@
+        
+        <div class="col-sm-12 col-md-7 col-xs-8">
+            <h2>Thông số kỹ thuật</h2>
+            @Html.Raw(HttpUtility.HtmlDecode(Model.Specification))
+        </div>
+    </div>
+    <hr />
+    <div class="container">
+        <div class="col-sm-10 col-md-10 col-xs-10">
+            <h2>Giới thiệu sản phẩm</h2>
+            @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,84 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootshop online Shopping cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+    <link href="/custom/client/themes/css/bootstrap-responsive.min.css" rel="stylesheet" />
+
+    <style type="text/css" id="enject"></style>
+    <style>
+        h4.ex {
+            color: white;
+            margin-top: 25px;
+        }
+    </style>
+
+</head>
+<body>
+   
+   
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index" style="margin-left:40px;">Online Shop</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    @*<li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">ĐIỆN THOẠI <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Page 1-1</a></li>
+                                <li><a href="#">Page 1-2</a></li>
+                                <li><a href="#">Page 1-3</a></li>
+                            </ul>
+                        </li>*@
+                    <li>@Html.ActionLink("ĐIỆN THOẠI", "Index", "Products", new { id = "1", namecatalog = "Điện Thoại" }, null)</li>
+                    <li>@Html.ActionLink("TABLET", "Index", "Products", new { id = "2", namecatalog = "TABLET" }, null)</li>
+                    <li>@Html.ActionLink("LAPTOP", "Index", "Products", new { id = "3", namecatalog = "LAPTOP" }, null)</li>
+                    <li>@Html.ActionLink("PHỤ KIỆN", "Index", "Products", new { id = "4", namecatalog = "Phụ Kiện" }, null)</li>
+                    <li>@Html.ActionLink("ĐỒNG HỒ", "Index", "Products", new { id = "5", namecatalog = "Đồng Hồ" }, null)</li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @{
+                        if (Session["user"] == null)
+                        {
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li><a href="@Url.Action("Index","Login")"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("ChiTietGioHang","ShoppingCart",new { id_user=Convert.ToInt32(Session["user"])})"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ Hàng Của Bạn</a></li>
+                            <li><a href="@Url.Action("DangXuat","Login")"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        }
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    @RenderBody()
+
+    <footer class="text-center" style="background-color: #2f2f2f;color: #fff;padding-top: 40px;padding-bottom: 40px;">
+        <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p>
+    </footer>
+
+</body>
+</html>
