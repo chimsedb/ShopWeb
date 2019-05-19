@@ -51,6 +51,18 @@ namespace ShopWEB.ConectDB
             return context.admins.SqlQuery(@"select * from admin").ToList();
         }
 
+        public void DangKyTK(string name,string email,string pass,string address,int phone)
+        {
+            var Name = new SqlParameter("@name", name);
+            var Email = new SqlParameter("@email", email);
+            var Pass = new SqlParameter("@pass", pass);
+            var Address = new SqlParameter("@address", address);
+            var Phone = new SqlParameter("@phone", phone);
+
+            context.Database.ExecuteSqlCommand(@"DANGKY @name,@email,@pass,@address,@phone", Name, Email, Pass, Address, Phone);
+            context.SaveChanges();
+        }
+
         public void UpdateSanPhamTrongGioHang(int ID_User,int ID_Pro)
         {
             var iduser = new SqlParameter("@id_user", ID_User);
