@@ -1,0 +1,103 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using ShopWEB.Models
+@model IEnumerable<Catalog>
+
+<script>
+    function validateForm() {
+        var name = document.forms["myForm"]["name"].value;
+        var price = document.forms["myForm"]["price"].value;
+        var image = document.forms["myForm"]["image"].value;
+        var chitiet = document.forms["myForm"]["chitiet"].value;
+        if (name == "" ) {
+            alert("Vui lòng điển tên sản phẩm");
+            return false;
+        }
+        if (price == "") {
+            alert("Vui lòng điển giá sản phẩm");
+            return false;
+        }
+        if (image == "") {
+            alert("Vui lòng điển thông tin ảnh của sản phẩm");
+            return false;
+        }
+        if (chitiet == "") {
+            alert("Vui lòng điển chi tiết sản phẩm");
+            return false;
+        }
+    }
+</script>
+</head>
+
+<div class="container">
+
+    <form action="Add" method="post" name="myForm" onsubmit="return validateForm()">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Thông Tin Sản Phẩm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td width="35%" style="padding-top:2%;">Tên Sản Phẩm : </td>
+                    <td>
+
+                        <input type="text" name="name" class="form-control" style="width:80%;" />
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td width="35%" style="padding-top:2%;">Mã Danh Mục Sản Phẩm : </td>
+                    <td>
+                        <select class="form-control" name="madanhmuc" style="width:80%;">
+                            @foreach (Catalog catalog in Model)
+                            {
+                                <option>@catalog.ID_Catalog - @catalog.Name  </option>
+                            }
+                        </select>
+                    </td>
+                    @*<td width="35%" style="padding-top:2%;">Mã Danh Mục Sản Phẩm : </td>
+                        <td>
+                            <input type="text" name="madanhmuc" class="form-control" style="width:80%;" />
+                        </td>*@
+
+                </tr>
+                <tr>
+                    <td width="35%" style="padding-top:2%;">Giá Thành Sản Phẩm : </td>
+                    <td>
+                        <input type="text" name="price" class="form-control" style="width:80%;" />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td width="35%" style="padding-top:2%;">Ảnh Sản Phẩm : </td>
+                    <td>
+                        <input type="text" name="image" class="form-control" style="width:80%;" />
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="form-group">
+            <label for="comment" style="padding-left:1%;">Chi tiết sản phẩm :</label>
+            <textarea class="form-control" name="chitiet" rows="5" id="comment"></textarea>
+        </div>
+
+
+        <div class="row" style="margin:auto;">
+            <a href="" style="margin-left:42%; margin-top:2%;">
+                <input type="submit" class="btn btn-primary" value="Thêm sản phẩm">
+            </a>
+
+        </div>
+    </form>
+</div>

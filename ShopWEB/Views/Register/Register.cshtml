@@ -1,0 +1,108 @@
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    .note {
+        text-align: center;
+        height: 80px;
+        background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+        color: #fff;
+        font-weight: bold;
+        line-height: 80px;
+    }
+
+    .form-content {
+        padding: 5%;
+        border: 1px solid #ced4da;
+        margin-bottom: 2%;
+    }
+
+    .form-control {
+        border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+        border: none;
+        border-radius: 1.5rem;
+        padding: 1%;
+        width: 20%;
+        cursor: pointer;
+        background: #0062cc;
+        color: #fff;
+    }
+</style>
+<script>
+    function validateForm() {
+        var ten = document.forms["myForm"]["ten"].value;
+        var email = document.forms["myForm"]["email"].value;
+        var mk = document.forms["myForm"]["mk"].value;
+        var xacnhanmk = document.forms["myForm"]["xacnhanmk"].value;
+        var diachi = document.forms["myForm"]["diachi"].value;
+        var sdt = document.forms["myForm"]["sdt"].value;
+        if (ten == "") {
+            alert("Vui lòng điển họ tên");
+            return false;
+        }
+        if (diachi == "") {
+            alert("Vui lòng điển địa chỉ");
+            return false;
+        }
+        if (sdt == "") {
+            alert("Vui lòng điển số điện thoại");
+            return false;
+        }
+        if (email == "") {
+            alert("Vui lòng điển email");
+            return false;
+        }
+        if (mk == "") {
+            alert("Vui lòng điển mật khẩu");
+            return false;
+        }
+        if (mk != xacnhanmk) {
+            alert("Vui lòng kiểm tra xác nhận mk");
+            return false;
+        }
+    }
+</script>
+<div class="container register-form">
+    <form action="@Url.Action("Register","Register")" name="myForm" method="post" onsubmit="return validateForm()">
+        <div class="form">
+            <div class="note">
+                <p>Đăng Ký Tài Khoản Mua Hàng</p>
+            </div>
+            <div class="form-content" style="padding-left:30%;">
+
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Họ Tên " value="" name="ten" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Địa Chỉ" value="" name="diachi" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Số Điện Thoại " value=""  name="sdt"/>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email" value="" name="email" />
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Mật Khẩu *" value="" name="mk"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Xác Nhận Mật Khẩu" value="" name="xacnhanmk" />
+                    </div>
+
+                </div>
+                <input type="submit" class="btnSubmit" style="margin-left:20%;" value="Submit" >
+            </div>
+        </div>
+    </form>
+</div>
