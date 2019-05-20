@@ -25,7 +25,15 @@ namespace ShopWEB.Areas.Admin.Controllers
             SelectAdmin selectAdmin = new SelectAdmin();
             string name = myform["name"];
             int madanhmuc = Convert.ToInt32(myform["madanhmuc"].Substring(0,2));
-            int price = Convert.ToInt32(myform["price"]);
+            int price ;
+            if (myform["price"] == "")
+            {
+                price = 0;
+            }
+            else
+            {
+                price = Convert.ToInt32(myform["price"]);
+            }
             string chitiet = myform["chitiet"];
             string image = myform["image"];
 

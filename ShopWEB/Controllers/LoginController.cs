@@ -20,7 +20,7 @@ namespace ShopWEB.Views.Login
 
         public ActionResult DangNhap(string email, string password)
         {
-            
+
             Select select = new Select();
             List<admin> admins = select.SelectAllAdmin();
             foreach (admin admin in admins)
@@ -38,13 +38,10 @@ namespace ShopWEB.Views.Login
             {
                 if (email == khachHang.Email && password == khachHang.Password)
                 {
-                    Session["user"] = khachHang.ID_User.ToString(); 
+                    Session["user"] = khachHang.ID_User.ToString();
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    return RedirectToAction("Index", "Login");
-                }
+                
 
             }
 
