@@ -82,6 +82,19 @@ namespace ShopWEB.ConectDB
             context.SaveChanges();
         }
 
+        public void ThongTinDonHang(int madonhang, string tennguoinhan, string sodienthoai,string luuy, string gioitinh,string diachi)
+        {
+            var Madonhang = new SqlParameter("@madonhang", madonhang);
+            var Tennguoinhan = new SqlParameter("@tennguoinhan", tennguoinhan);
+            var Sodienthoai = new SqlParameter("@sodienthoai", sodienthoai);
+            var Luuy = new SqlParameter("@luuy", luuy);
+            var Gioitinh = new SqlParameter("@gioitinh", gioitinh);
+            var Diachi = new SqlParameter("@diachi", diachi);
+
+            context.Database.ExecuteSqlCommand(@"ThongTinDonHang @madonhang,@tennguoinhan,@sodienthoai,@luuy,@gioitinh,@diachi", Madonhang, Tennguoinhan, Sodienthoai, Luuy, Gioitinh, Diachi);
+            context.SaveChanges();
+        }
+
         public void ThemSanPhamVaoGioHang(int ID_User, int ID_Pro)
         {
             var iduser = new SqlParameter("@id_user", ID_User);
@@ -107,12 +120,14 @@ namespace ShopWEB.ConectDB
            
         }
 
-        public void XoaSPGioHang(int ID_User,int Madonhang)
+        public void XoaSPGioHang(int ID_User,int Madonhang,int id)
         {
+            
             var iduser = new SqlParameter("@id_user", ID_User);
             var madonhang = new SqlParameter("@madonhang", Madonhang);
+            var Id = new SqlParameter("@id", id);
 
-            context.Database.ExecuteSqlCommand(@"XOASPGIOHANG @ID_user,@madonhang", iduser, madonhang);
+            context.Database.ExecuteSqlCommand(@"XOASPGIOHANG @ID_user,@madonhang,@id", iduser, madonhang, Id);
             context.SaveChanges();
         }
 

@@ -7,6 +7,7 @@ namespace ShopWEB.Models
 {
     public class GioHang
     {
+        public int id { get; set; }
         public int ID_Product { get; set; }
         public int soluong { get; set; }
         public string Name { get; set; }

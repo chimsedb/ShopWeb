@@ -49,12 +49,31 @@ namespace ShopWEB.Controllers
 
         }
 
+        public ActionResult ThongTinDonHang(int id_user,int madonhang)
+        {
+            ViewBag.id_user = id_user;
+            Session["madonhang"] = madonhang;
+            return View();
+
+        }
+        [HttpPost]
+        [ActionName("ThongTinDonHang")]
+        public ActionResult ThongTinDonHangPost(string ten,string sdt,string luuy,string gioitinh,string diachi)
+        {
+            int madonhang = Convert.ToInt32(Session["madonhang"]);
+
+            Select select = new Select();
+            select.ThongTinDonHang(madonhang,ten,"0"+ Convert.ToInt32(sdt) , luuy,gioitinh,diachi);
+            return RedirectToAction("ThanhToanSP", "ShoppingCart", new { id_user = Convert.ToInt32(Session["user"]) });
+
+        }
+
         public ActionResult ThanhToanSP(int id_user)
         {
             
             Select select = new Select();
             select.ThanhToan(id_user);
-            return RedirectToAction("ChiTietGioHang", "ShoppingCart",new { id_user = id_user});
+            return RedirectToAction("Index", "Home");
 
         }
         [HttpPost]
@@ -70,10 +89,10 @@ namespace ShopWEB.Controllers
 
         }
 
-        public ActionResult XoaSPGioHang(int madonhang, int id_user)
+        public ActionResult XoaSPGioHang(int madonhang, int id_user,int id)
         {
             Select select = new Select();
-            select.XoaSPGioHang(madonhang, id_user);
+            select.XoaSPGioHang(madonhang, id_user,id);
             return RedirectToAction("ChiTietGioHang", "ShoppingCart", new { id_user = Convert.ToInt32(Session["user"]) });
         }
     }

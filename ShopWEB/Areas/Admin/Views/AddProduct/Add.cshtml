@@ -11,7 +11,7 @@
         var price = document.forms["myForm"]["price"].value;
         var image = document.forms["myForm"]["image"].value;
         var chitiet = document.forms["myForm"]["chitiet"].value;
-        if (name == "" ) {
+        if (name == "") {
             alert("Vui lòng điển tên sản phẩm");
             return false;
         }
@@ -29,7 +29,7 @@
         }
     }
 </script>
-</head>
+
 
 <div class="container">
 
@@ -78,7 +78,8 @@
                 <tr>
                     <td width="35%" style="padding-top:2%;">Ảnh Sản Phẩm : </td>
                     <td>
-                        <input type="text" name="image" class="form-control" style="width:80%;" />
+                        <input type="file" name="image" style="width:80%;" id="image_file" />
+                       
                     </td>
 
                 </tr>
@@ -89,7 +90,8 @@
 
         <div class="form-group">
             <label for="comment" style="padding-left:1%;">Chi tiết sản phẩm :</label>
-            <textarea class="form-control" name="chitiet" rows="5" id="comment"></textarea>
+        <textarea class="form-control" name="chitiet" rows="5" id="comment"></textarea>
+            
         </div>
 
 
@@ -101,3 +103,8 @@
         </div>
     </form>
 </div>
+
+
+
+
+

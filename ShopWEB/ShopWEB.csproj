@@ -1856,6 +1856,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\ShoppingCart\ChiTietGioHang.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\ShoppingCart\ThongTinDonHang.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -7,8 +7,17 @@
 @using ShopWEB.Models
 @model IEnumerable<Product>
 
+<script>
+    function them() {
+      if (@Session["user"] != null) {
+
+            alert("Thêm Thành Công");
+        }
+    }
+</script>
+
 <div class="container">
-    
+
     @if (@ViewBag.namecatalog != null)
     {
         <h4 style="margin-left:45px;font-family:'Times New Roman';">
@@ -30,7 +39,7 @@
                         <a class="btn btn-default" href="/Home/DetailProduct/@product.ID_Product">
                             <i class="glyphicon glyphicon-search"></i>
                         </a>
-                        <a class="btn btn-default" href="@Url.Action("ThemGioHang","ShoppingCart",new { id_pro = @product.ID_Product})">Add to <i class="icon-shopping-cart"></i></a>
+                        <a class="btn btn-default" href="@Url.Action("ThemGioHang","ShoppingCart",new { id_pro = @product.ID_Product})" onclick="them()">Add to <i class="icon-shopping-cart"></i></a>
                         <a class="btn btn-primary" href="#">@product.Price</a>
                     </h4>
                 </div>

@@ -1,0 +1,96 @@
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<script>
+    function validateForm() {
+
+        var ten = document.forms["myForm"]["ten"].value;
+        var sdt = document.forms["myForm"]["sdt"].value;
+        var gioitinh = document.forms["myForm"]["gioitinh"].value;
+        var diachi = document.forms["myForm"]["diachi"].value;
+
+        if (ten == "") {
+            alert("Vui lòng điển họ tên của bạn hoặc người nhận");
+            return false;
+        }
+        if (sdt == "") {
+            alert("Vui lòng điển số điện thoại của bạn hoặc người nhận");
+            return false;
+        }
+        if (isNaN(sdt)) {
+            alert("Số điện thoại không hợp lệ . Vui lòng điền lại số điện thoại");
+            return false;
+        }
+        if (gioitinh == "") {
+            alert("Vui lòng chọn giới tính của bạn");
+            return false;
+        }
+        if (diachi == "") {
+            alert("Vui lòng điển địa chỉ nhận hàng");
+            return false;
+        }
+        
+
+    }
+</script>
+
+<div class="container">
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <header class="card-header">
+                    <a href="" class="float-right btn btn-outline-primary mt-1">Giỏ hàng của bạn</a>
+                    <h4 class="card-title mt-2">Thông Tin Đơn Hàng</h4>
+                </header>
+                <article class="card-body">
+                    <form action="ThongTinDonHang" method="post" name="myForm" onsubmit="return validateForm()">
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label>Tên người nhận </label>
+                                <input type="tel" name="ten" class="form-control" placeholder="" value="">
+                            </div> <!-- form-group end.// -->
+                            <div class="col form-group">
+                                <label>Số điện thoại</label>
+                                <input type="text" name="sdt" class="form-control" placeholder=" " value="">
+                            </div> <!-- form-group end.// -->
+                        </div> <!-- form-row end.// -->
+                        <div class="form-group">
+                            <label>Lưu ý</label>
+                            <input type="text" name="luuy" class="form-control" placeholder="">
+                            <small class="form-text text-muted">Hãy để lại lưu ý cho chúng tôi về đơn hàng của bạn</small>
+                        </div> <!-- form-group end.// -->
+                        <div class="form-group">
+                            <label class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gioitinh" value="Nam" >
+                                <span class="form-check-label"> Nam </span>
+                            </label>
+                            <label class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gioitinh" value="Nữ">
+                                <span class="form-check-label"> Nữ</span>
+                            </label>
+                        </div> <!-- form-group end.// -->
+
+                        <div class="form-group">
+                            <label>Địa chỉ nhận đơn hàng</label>
+                            <input class="form-control" type="text" name="diachi">
+                        </div> <!-- form-group end.// -->
+                        <div class="form-group">
+                            @*<a href="@Url.Action("ThanhToanSP","ShoppingCart",new { id_user = ViewBag.id_user})" class="btn btn-primary btn-block" >Xác Nhận Đơn Hàng </a>*@
+                            <input type="submit" class="btn btn-primary btn-block" value="Xác Nhận Đơn Hàng" />
+                        </div> <!-- form-group// -->
+
+                    </form>
+                </article> <!-- card-body end .// -->
+
+            </div> <!-- card.// -->
+        </div> <!-- col.//-->
+    </div> <!-- row.//-->
+
+</div>
+
+
+

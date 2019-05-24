@@ -83,14 +83,16 @@
     int sum = 0;
 }
 
+
+
 <div class="container">
 
-    <form method="post" action="CapNhatSLGioHang">
+    <form method="post" action="CapNhatSLGioHang" name="myForm" onsubmit="return validateForm()">
         <div class="card shopping-cart">
             <div class="card-header bg-dark text-light">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 Giỏ Hàng Của Bạn
-                <a href="@Url.Action("Index","Home")" class="btn btn-outline-info btn-sm pull-right">Tiếp tục mua sắm</a>
+                <a href="@Url.Action("Index", "Home")" class="btn btn-outline-info btn-sm pull-right">Tiếp tục mua sắm</a>
                 <div class="clearfix"></div>
             </div>
             <div class="card-body">
@@ -101,7 +103,7 @@
                     if (gioHang.Status == 0)
                     {
                         sum = sum + (gioHang.soluong * gioHang.Price);
-
+                        Session["madonhang"] = gioHang.MaDonHang;
                         <div class="row">
                             <input type="text" hidden name="id" value="@gioHang.ID_Product">
                             <div class="col-12 col-sm-12 col-md-2 text-center">
@@ -127,16 +129,16 @@
 
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-2 col-sm-2 col-md-2 text-right">
-                                    <a href="@Url.Action("XoaSPGioHang","ShoppingCart",new { madonhang = gioHang.MaDonHang , id_user = Convert.ToInt32(Session["user"])})">
+                                    <a href="@Url.Action("XoaSPGioHang", "ShoppingCart", new { madonhang = gioHang.MaDonHang, id_user = Convert.ToInt32(Session["user"]), id = gioHang.id })">
                                         <button type="button" class="btn btn-outline-danger btn-xs">
-                                            <i typeof="submit" class="fa fa-trash" aria-hidden="true">
+                                            <i typeof="submit" class="fa fa-trash" aria-hidden="true" name="xoa" onclick="xoa()">
                                             </i>
                                         </button>
                                     </a>
                                 </div>
-                               
+
                             </div>
                         </div>
                         <hr>
@@ -144,20 +146,28 @@
                     }
                 }
 
-
                 <!-- END PRODUCT -->
                 <div class="pull-right">
                     <input type="submit" class="btn btn-outline-secondary pull-right" value="Cập nhật giỏ hàng">
                 </div>
             </div>
             <div class="card-footer">
+
                 <div class="pull-right" style="margin-right:35%;">
-                    <a href="@Url.Action("ThanhToanSP","ShoppingCart",new { id_user = ViewBag.id_user})" class="btn btn-success pull-right">Thanh Toán</a>
+
+
+                    <a href="@Url.Action("ThongTinDonHang", "ShoppingCart", new { id_user = ViewBag.id_user, madonhang = Convert.ToInt32(Session["madonhang"]) })" class="btn btn-success pull-right">Thanh Toán</a>
+
+
                     <div class="pull-right" style="margin: 5px; margin-right:15px; margin-top:7px">
                         Tổng Tiền: <b>@sum</b>
                     </div>
                 </div>
+
             </div>
         </div>
     </form>
 </div>
+
+
+
