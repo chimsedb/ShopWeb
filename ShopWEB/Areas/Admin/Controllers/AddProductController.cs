@@ -35,12 +35,13 @@ namespace ShopWEB.Areas.Admin.Controllers
                 price = Convert.ToInt32(myform["price"]);
             }
             string chitiet = myform["chitiet"];
-            string dir = "file:///" + "C:/Users/Hung Dang/Desktop/img/";
+            string dir = "~/custom/client/image/";
             string image = dir + myform["image"];
 
             selectAdmin.AddProduct(Convert.ToInt32(Session["admin"]), madanhmuc, name, price, chitiet, image);
 
             return RedirectToAction("Index", "AdminHome", new { id = Session["admin"] });
+        
         }
     }
 }

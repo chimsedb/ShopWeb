@@ -27,6 +27,7 @@ namespace ShopWEB.Views.Login
             {
                 if (email == admin.UserName && password == admin.Password)
                 {
+                    Session["admin"] = null;
                     Session["admin"] = admin.ID_Admin.ToString();
                     return RedirectToAction("Index", "Admin/AdminHome", new { id = Convert.ToInt32(Session["admin"]) });
                 }
@@ -38,6 +39,7 @@ namespace ShopWEB.Views.Login
             {
                 if (email == khachHang.Email && password == khachHang.Password)
                 {
+                    Session["user"] = null;
                     Session["user"] = khachHang.ID_User.ToString();
                     return RedirectToAction("Index", "Home");
                 }

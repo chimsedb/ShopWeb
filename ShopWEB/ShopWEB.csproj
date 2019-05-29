@@ -1661,6 +1661,10 @@
     <Content Include="custom\admin\vendor\jquery\jquery.min.js" />
     <Content Include="custom\admin\vendor\jquery\jquery.slim.js" />
     <Content Include="custom\admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="custom\client\image\apple-macbook-air.jpg" />
+    <Content Include="custom\client\image\iphone-x-64gb.jpg" />
+    <Content Include="custom\client\image\oppo-f11-pro.jpg" />
+    <Content Include="custom\client\image\vivo-y15-blue.jpg" />
     <Content Include="custom\client\themes\css\base.css" />
     <Content Include="custom\client\themes\css\bootstrap-responsive.min.css" />
     <Content Include="custom\client\themes\css\font-awesome-ie7.css" />
@@ -1875,6 +1879,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Custom\css\" />
+    <Folder Include="Areas\Admin\Custom\image\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
