@@ -1676,6 +1676,10 @@
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\AlterProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\DeleteProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongKeController.cs" />
+    <Compile Include="Areas\Admin\Models\ChiTietDonHang.cs" />
+    <Compile Include="Areas\Admin\Models\ThongKeDonHang.cs" />
+    <Compile Include="Areas\Admin\Models\TTNguoiNhan.cs" />
     <Compile Include="ConectDB\Select.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1848,6 +1852,10 @@
     <Content Include="Areas\Admin\Views\AlterProduct\Alter.cshtml" />
     <Content Include="Areas\Admin\Views\AlterProduct\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DeleteProduct\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\TKSPXacNhan.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\TKSPChuaXacNhan.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\ChiTietDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\ChiTietDonHangChuaXN.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -1867,7 +1875,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Custom\css\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

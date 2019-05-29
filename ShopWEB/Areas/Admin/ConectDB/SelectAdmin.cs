@@ -1,4 +1,5 @@
-﻿using ShopWEB.Models;
+﻿using ShopWEB.Areas.Admin.Models;
+using ShopWEB.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -44,6 +45,28 @@ namespace ShopWEB.Areas.Admin.ConectDB
 
             context.Database.ExecuteSqlCommand(@"SUASP @id_pro,@price", Id_pro, Price);
             context.SaveChanges();
+        }
+
+        public List<ThongKeDonHang> TKDHXacNhan(int status)
+        {
+            var Status = new SqlParameter("@status", status);
+
+            return context.Database.SqlQuery<ThongKeDonHang>(@"TKDH @status", Status).ToList();
+        }
+
+        public List<ChiTietDonHang> ChiTietDonHang(int madonhang)
+        {
+            var Madonhang = new SqlParameter("@madonhang", madonhang);
+
+            return context.Database.SqlQuery<ChiTietDonHang>(@"ChiTietDH @madonhang", Madonhang).ToList();
+        }
+
+        public TTNguoiNhan ThongTinKhachHang(int madonhang)
+        {
+            var Madonhang = new SqlParameter("@madonhang", madonhang);
+            TTNguoiNhan tTNguoiNhan = context.Database.SqlQuery<TTNguoiNhan>(@"TTNguoiNhan @madonhang", Madonhang).SingleOrDefault();
+
+            return tTNguoiNhan;
         }
     }
 }

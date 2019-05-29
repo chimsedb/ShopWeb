@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using ShopWEB.Areas.Admin.Models
+@model IEnumerable<ThongKeDonHang>
+<div class="container ">
+    <h3>Thống kê thông tin sản phẩm</h3>
+    <hr />
+    <table class="table table-bordered" style="margin-top:15px;">
+        <thead>
+            <tr>
+                <th>Mã Đơn Hàng</th>
+                <th>Tài Khoản Sử dụng</th>
+                <th>Trạng thái Đơn Hàng</th>
+                <th>Số Lượng</th>
+                <th>Tổng Tiền</th>
+                <th>Chi Tiết</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (ThongKeDonHang thongKe in Model)
+            {
+                <tr>
+                    <td>@thongKe.MaDonHang</td>
+                    <td>@thongKe.Email</td>
+                    <td>Chưa xác nhận</td>
+                    <td>@thongKe.SoLuong</td>
+                    <td>@thongKe.TongTien</td>
+
+                    <td>
+                        <a href="@Url.Action("ChiTietDonHangChuaXN","ThongKe",new { id = Convert.ToInt32(Session["admin"]),madonhang = thongKe.MaDonHang})">
+                            <img src="http://www.clker.com/cliparts/E/X/T/d/g/H/red-edit-icon-glossy-hi.png" class="img-rounded" alt="Cinque Terre" style="width:20px; height:20px; margin-left:20%;">
+                        </a>
+
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+
+
+    </table>
+</div>
